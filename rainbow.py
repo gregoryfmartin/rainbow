@@ -16,37 +16,20 @@ class ConsoleColor:
         self.green = kwargs['green'] if 'green' in kwargs else 0
         self.blue  = kwargs['blue'] if 'blue' in kwargs else 0
 
-    def to_ansi_str(self):
-        """
-        Returns the red, green, and blue channels as an ANSI 24-bit formatted suffix.
-        This function isn't intended to be used on its own.
-        """
-        return f"{self.red};{self.green};{self.blue}m"
-
-    def to_fg_str(self):
-        """
-        Returns the color channels as an ANSI 24-bit color foreground string.
-        """
-        return f"\x1b[38;2;{self.to_ansi_str()}"
-
-    def to_bg_str(self):
-        """
-        Returns the color channels as an ANSI 24-bit color background string.
-        """
-        return f"\x1b[48;2;{self.to_ansi_str()}"
-
 
 class ForegroundColor(ConsoleColor):
     """
     Foundation class for colors used in the foreground.
     """
+    def __str__(self):
+        return f"\x1b[38;2;{self.red};{self.green};{self.blue}m"
 
 
 class ForegroundColorNone(ConsoleColor):
     """
     Specialization meant to be used for no foreground color.
     """
-    def to_ansi_str(self):
+    def __str__(self):
         return ''
 
 
@@ -54,13 +37,15 @@ class BackgroundColor(ConsoleColor):
     """
     Foundation class for colors used in the background.
     """
+    def __str__(self):
+        return f"\x1b[48;2;{self.red};{self.green};{self.blue}m"
 
 
 class BackgroundColorNone(ConsoleColor):
     """
     Specialization meant to be used for no background color.
     """
-    def to_ansi_str(self):
+    def __str__(self):
         return ''
 
 
