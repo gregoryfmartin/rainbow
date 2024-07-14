@@ -1,4 +1,4 @@
-# pylint: disable=line-too-long, too-many-lines
+# pylint: disable=line-too-long, too-many-lines, too-few-public-methods
 
 """
 Provides 24-bit color definitions for use by ANSI Escape Sequence functions.
