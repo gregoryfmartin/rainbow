@@ -1089,3 +1089,7 @@ class CCListItemHighlight(CCAppleNPinkLight):
     """
     Default color used for list highlights.
     """
+
+
+if __name__ == '__main__':
+    print("Rainbow isn't intended to be used alone. Please import it into another file.")
